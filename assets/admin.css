@@ -1,0 +1,613 @@
+/**
+ * AI Article Rewriter Admin CSS
+ * File: assets/admin.css
+ */
+
+/* Main plugin container */
+.ai-rewriter-admin {
+    max-width: 1200px;
+    margin: 20px 0;
+}
+
+/* Status cards */
+.ai-rewriter-status-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.ai-rewriter-status-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: box-shadow 0.2s ease;
+}
+
+.ai-rewriter-status-card:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.ai-rewriter-status-card h3 {
+    margin-top: 0;
+    color: #333;
+    font-size: 18px;
+}
+
+.status-success {
+    border-left: 4px solid #28a745;
+}
+
+.status-warning {
+    border-left: 4px solid #ffc107;
+}
+
+.status-error {
+    border-left: 4px solid #dc3545;
+}
+
+.status-info {
+    border-left: 4px solid #17a2b8;
+}
+
+/* Article grid */
+.ai-rewriter-articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.ai-rewriter-article-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.ai-rewriter-article-card:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+}
+
+.ai-rewriter-article-card h3 {
+    margin-top: 0;
+    font-size: 16px;
+    line-height: 1.4;
+    color: #333;
+    max-height: 2.8em;
+    overflow: hidden;
+}
+
+.ai-rewriter-article-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px 0;
+    font-size: 13px;
+    color: #666;
+}
+
+.ai-rewriter-article-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.ai-rewriter-article-card.processing {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.ai-rewriter-article-card.completed {
+    background: #f8f9fa;
+    border-color: #28a745;
+}
+
+.ai-rewriter-processed-badge {
+    background: #28a745;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Buttons */
+.ai-rewriter-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 16px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.ai-rewriter-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.ai-rewriter-btn:active {
+    transform: translateY(0);
+}
+
+.ai-rewriter-btn-primary {
+    background: #0073aa;
+    color: white;
+}
+
+.ai-rewriter-btn-primary:hover {
+    background: #005a87;
+    color: white;
+}
+
+.ai-rewriter-btn-secondary {
+    background: #f1f1f1;
+    color: #333;
+    border: 1px solid #ccd0d4;
+}
+
+.ai-rewriter-btn-secondary:hover {
+    background: #e8e8e8;
+    color: #333;
+}
+
+.ai-rewriter-btn-success {
+    background: #28a745;
+    color: white;
+}
+
+.ai-rewriter-btn-success:hover {
+    background: #218838;
+    color: white;
+}
+
+.ai-rewriter-btn-warning {
+    background: #ffc107;
+    color: #212529;
+}
+
+.ai-rewriter-btn-warning:hover {
+    background: #e0a800;
+    color: #212529;
+}
+
+.ai-rewriter-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+/* Loading states */
+.ai-rewriter-loading {
+    position: relative;
+    overflow: hidden;
+}
+
+.ai-rewriter-loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+/* Progress indicators */
+.ai-rewriter-progress {
+    width: 100%;
+    height: 4px;
+    background: #e9ecef;
+    border-radius: 2px;
+    overflow: hidden;
+    margin: 10px 0;
+}
+
+.ai-rewriter-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #0073aa, #005a87);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+.ai-rewriter-progress-indeterminate .ai-rewriter-progress-bar {
+    width: 30%;
+    animation: indeterminate 2s linear infinite;
+}
+
+@keyframes indeterminate {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(400%);
+    }
+}
+
+/* Settings page styling */
+.ai-rewriter-settings-section {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 20px 0;
+    overflow: hidden;
+}
+
+.ai-rewriter-settings-header {
+    background: #f8f9fa;
+    padding: 15px 20px;
+    border-bottom: 1px solid #ddd;
+    font-weight: 600;
+    color: #333;
+}
+
+.ai-rewriter-settings-body {
+    padding: 20px;
+}
+
+.ai-rewriter-form-row {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+    gap: 15px;
+}
+
+.ai-rewriter-form-label {
+    min-width: 150px;
+    font-weight: 500;
+    color: #333;
+}
+
+.ai-rewriter-form-input {
+    flex: 1;
+}
+
+.ai-rewriter-form-help {
+    font-size: 12px;
+    color: #666;
+    margin-top: 5px;
+    line-height: 1.4;
+}
+
+/* API endpoint documentation */
+.ai-rewriter-api-docs {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.ai-rewriter-api-docs h3 {
+    margin-top: 0;
+    color: #495057;
+}
+
+.ai-rewriter-api-endpoint {
+    background: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    margin: 15px 0;
+    overflow: hidden;
+}
+
+.ai-rewriter-api-endpoint-header {
+    background: #e9ecef;
+    padding: 10px 15px;
+    font-weight: 500;
+    color: #495057;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.ai-rewriter-api-endpoint-body {
+    padding: 15px;
+}
+
+.ai-rewriter-code {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    padding: 10px;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    color: #495057;
+    overflow-x: auto;
+    margin: 10px 0;
+}
+
+/* Activity logs */
+.ai-rewriter-activity-log {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.ai-rewriter-log-entry {
+    padding: 10px 15px;
+    border-bottom: 1px solid #f1f1f1;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ai-rewriter-log-entry:last-child {
+    border-bottom: none;
+}
+
+.ai-rewriter-log-icon {
+    font-size: 16px;
+}
+
+.ai-rewriter-log-message {
+    flex: 1;
+    color: #333;
+}
+
+.ai-rewriter-log-time {
+    color: #666;
+    font-style: italic;
+    font-size: 12px;
+}
+
+/* Statistics */
+.ai-rewriter-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.ai-rewriter-stat-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+}
+
+.ai-rewriter-stat-number {
+    font-size: 32px;
+    font-weight: bold;
+    color: #0073aa;
+    display: block;
+}
+
+.ai-rewriter-stat-label {
+    font-size: 14px;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* Notifications */
+.ai-rewriter-notification {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+    font-size: 14px;
+}
+
+.ai-rewriter-notification-success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.ai-rewriter-notification-warning {
+    background: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeaa7;
+}
+
+.ai-rewriter-notification-error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.ai-rewriter-notification-info {
+    background: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+}
+
+.ai-rewriter-notification-icon {
+    font-size: 18px;
+}
+
+.ai-rewriter-notification-dismiss {
+    margin-left: auto;
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.ai-rewriter-notification-dismiss:hover {
+    opacity: 1;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .ai-rewriter-articles-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .ai-rewriter-status-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .ai-rewriter-stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+    
+    .ai-rewriter-form-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    .ai-rewriter-form-label {
+        min-width: auto;
+    }
+    
+    .ai-rewriter-article-actions {
+        justify-content: flex-start;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .ai-rewriter-status-card,
+    .ai-rewriter-article-card,
+    .ai-rewriter-settings-section,
+    .ai-rewriter-activity-log,
+    .ai-rewriter-stat-card,
+    .ai-rewriter-api-docs,
+    .ai-rewriter-api-endpoint {
+        background: #2c2c2c;
+        border-color: #444;
+        color: #e0e0e0;
+    }
+    
+    .ai-rewriter-settings-header,
+    .ai-rewriter-api-endpoint-header {
+        background: #3a3a3a;
+        border-color: #444;
+        color: #e0e0e0;
+    }
+    
+    .ai-rewriter-code {
+        background: #3a3a3a;
+        border-color: #444;
+        color: #e0e0e0;
+    }
+    
+    .ai-rewriter-article-card h3,
+    .ai-rewriter-form-label,
+    .ai-rewriter-log-message {
+        color: #e0e0e0;
+    }
+    
+    .ai-rewriter-article-meta,
+    .ai-rewriter-form-help,
+    .ai-rewriter-log-time {
+        color: #999;
+    }
+}
+
+/* Animations */
+.ai-rewriter-fade-in {
+    animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.ai-rewriter-slide-in {
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Custom scrollbar */
+.ai-rewriter-activity-log::-webkit-scrollbar {
+    width: 8px;
+}
+
+.ai-rewriter-activity-log::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.ai-rewriter-activity-log::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+.ai-rewriter-activity-log::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* Utility classes */
+.ai-rewriter-text-center {
+    text-align: center;
+}
+
+.ai-rewriter-text-right {
+    text-align: right;
+}
+
+.ai-rewriter-mb-0 {
+    margin-bottom: 0;
+}
+
+.ai-rewriter-mt-20 {
+    margin-top: 20px;
+}
+
+.ai-rewriter-hidden {
+    display: none;
+}
+
+.ai-rewriter-flex {
+    display: flex;
+}
+
+.ai-rewriter-justify-between {
+    justify-content: space-between;
+}
+
+.ai-rewriter-align-center {
+    align-items: center;
+}
+
+.ai-rewriter-gap-10 {
+    gap: 10px;
+}
