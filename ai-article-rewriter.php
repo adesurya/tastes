@@ -23,6 +23,8 @@ define('AI_REWRITER_VERSION', '2.0.0');
 define('AI_REWRITER_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('AI_REWRITER_PLUGIN_PATH', plugin_dir_path(__FILE__));
 
+require_once plugin_dir_path(__FILE__) . 'includes/class-cron-scheduler.php';
+
 /**
  * Main Plugin Class - Enhanced with API Endpoints
  */
