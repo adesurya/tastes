@@ -55,6 +55,7 @@ Please provide a completely rewritten version with:
 3. Maintain the core message and key information
 4. Use natural language and flow
 5. Format with proper paragraphs
+6. Only Alphanumeric Character in Title 
 
 Response format:
 TITLE: [new title]
