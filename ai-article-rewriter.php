@@ -23,7 +23,6 @@ define('AI_REWRITER_VERSION', '2.0.0');
 define('AI_REWRITER_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('AI_REWRITER_PLUGIN_PATH', plugin_dir_path(__FILE__));
 
-
 $includes_path = plugin_dir_path(__FILE__) . 'includes/';
 require_once $includes_path . 'class-ai-api.php';
 require_once $includes_path . 'class-content-parser.php';
@@ -31,6 +30,7 @@ require_once $includes_path . 'class-logger.php';
 require_once $includes_path . 'class-image-handler.php';
 
 // Now load cron scheduler (classes are available!)
+
 require_once plugin_dir_path(__FILE__) . 'includes/class-cron-scheduler.php';
 
 /**
